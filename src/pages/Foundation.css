@@ -1,0 +1,117 @@
+.foundation-page {
+  padding: 8rem 1rem 4rem;
+  background: transparent;
+  position: relative;
+}
+
+.foundation-section {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+  line-height: 2.1;
+  font-size: 1.15rem;
+}
+
+.foundation-section h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+}
+
+.foundation-section p {
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.foundation-section ul {
+  list-style: disc inside;
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+.side-banner {
+  position: fixed;
+  top: 0;
+  width: 60px;
+  height: 100vh;
+  background: linear-gradient(to bottom, #002855, #005BBB);
+  opacity: 0.25;
+  z-index: -1;
+}
+
+.left-banner {
+  left: 0;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+}
+
+.right-banner {
+  right: 0;
+  border-top-left-radius: 60px;
+  border-bottom-left-radius: 60px;
+}
+
+.floating-light {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 200px;
+  height: 100vh;
+  background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%);
+  animation: floaty 12s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(30px); }
+  100% { transform: translateY(0px); }
+}
+
+.foundation-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  min-height: 3rem; /* helps avoid layout shift as typewriter appears */
+  white-space: nowrap; /* optional for clean appearance */
+}
+
+.foundation-cards-container {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.foundation-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.foundation-card ul {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.cta-fixed-button {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #003366;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  transition: background 0.3s ease;
+}
+
+.cta-fixed-button:hover {
+  background-color: #002244;
+}
+
