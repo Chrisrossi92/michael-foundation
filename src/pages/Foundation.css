@@ -1,78 +1,38 @@
+
 .foundation-page {
   padding: 8rem 1rem 4rem;
-  background: transparent;
+  background: linear-gradient(to bottom, #f6f7fa, #eef2f5);
   position: relative;
 }
 
-.foundation-section {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 4rem 1rem;
-  line-height: 2.1;
-  font-size: 1.15rem;
-}
-
-.foundation-section h2 {
-  margin-bottom: 1.5rem;
-  font-size: 1.75rem;
-}
-
-.foundation-section p {
-  line-height: 1.6;
-  font-size: 1rem;
-}
-
-.foundation-section ul {
-  list-style: disc inside;
-  padding-left: 1rem;
-  margin-top: 0.5rem;
-}
-
-.side-banner {
+.foundation-page::after {
+  content: "";
   position: fixed;
-  top: 0;
-  width: 60px;
-  height: 100vh;
-  background: linear-gradient(to bottom, #002855, #005BBB);
-  opacity: 0.25;
-  z-index: -1;
-}
-
-.left-banner {
-  left: 0;
-  border-top-right-radius: 60px;
-  border-bottom-right-radius: 60px;
-}
-
-.right-banner {
-  right: 0;
-  border-top-left-radius: 60px;
-  border-bottom-left-radius: 60px;
-}
-
-.floating-light {
-  position: fixed;
-  top: 0;
+  top: 30%;
   left: 50%;
-  width: 200px;
-  height: 100vh;
-  background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%);
-  animation: floaty 12s ease-in-out infinite;
-}
-
-@keyframes floaty {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(30px); }
-  100% { transform: translateY(0px); }
+  width: 400px;
+  height: 400px;
+  background: url('/assets/signature.png') no-repeat center center;
+  background-size: contain;
+  opacity: 0.04;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .foundation-heading {
   text-align: center;
   font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 2rem;
-  min-height: 3rem; /* helps avoid layout shift as typewriter appears */
-  white-space: nowrap; /* optional for clean appearance */
+  margin-bottom: 1rem;
+}
+
+.foundation-quote {
+  font-style: italic;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #555;
 }
 
 .foundation-cards-container {
@@ -84,11 +44,19 @@
 }
 
 .foundation-card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.92);
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #003366;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease-out;
+}
+
+.foundation-card.reveal {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .foundation-card ul {
@@ -114,4 +82,3 @@
 .cta-fixed-button:hover {
   background-color: #002244;
 }
-

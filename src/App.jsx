@@ -3,7 +3,6 @@ import Home from './pages/home';
 import AboutMichael from './pages/AboutMichael';
 import Foundation from './pages/Foundation';
 import Events from './pages/Events';
-import GetInvolved from './pages/GetInvolved';
 import Contact from './pages/Contact';
 import foundationLogo from './assets/rossi-logo.jpeg';
 import signatureLogo from './assets/signature-logo.png';
@@ -23,7 +22,6 @@ function App() {
   <Link to="/about-michael">About Michael</Link>
   <Link to="/foundation">The Foundation</Link>
   <Link to="/events">Events & News</Link>
-  <Link to="/get-involved">Get Involved</Link>
   <Link to="/contact">Contact</Link>
 </nav>
 
@@ -34,7 +32,6 @@ function App() {
         <Route path="/about-michael" element={<AboutMichael />} />
         <Route path="/foundation" element={<Foundation />} />
         <Route path="/events" element={<Events />} />
-        <Route path="/get-involved" element={<GetInvolved />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </div>
