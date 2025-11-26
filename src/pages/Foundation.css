@@ -1,42 +1,45 @@
+/* src/pages/Foundation.css */
 
 .foundation-page {
-  padding: 8rem 1rem 4rem;
-  background: linear-gradient(to bottom, #f6f7fa, #eef2f5);
   position: relative;
+  min-height: 100vh;
+  padding: 8rem 1.5rem 5rem;
+  background: radial-gradient(circle at top, #f9fbff 0%, #e6edf7 40%, #dfe6f1 100%);
+  overflow-x: hidden;
 }
 
-.foundation-page::after {
-  content: "";
-  position: fixed;
-  top: 30%;
-  left: 50%;
-  width: 400px;
-  height: 400px;
-  background: url('/assets/signature.png') no-repeat center center;
-  background-size: contain;
-  opacity: 0.04;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 0;
+/* HERO SECTION */
+.foundation-hero {
+  max-width: 840px;
+  margin: 0 auto 3rem auto;
+  text-align: center;
 }
 
 .foundation-heading {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+  font-size: clamp(2.4rem, 3vw, 3rem);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.foundation-tagline {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  color: #23324a;
 }
 
 .foundation-quote {
   font-style: italic;
-  font-size: 1.1rem;
-  text-align: center;
-  margin-bottom: 3rem;
-  color: #555;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  color: #65708a;
 }
 
+/* CONTENT CARDS */
+
 .foundation-cards-container {
-  max-width: 720px;
+  max-width: 840px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -44,14 +47,22 @@
 }
 
 .foundation-card {
-  background: rgba(255, 255, 255, 0.92);
-  padding: 2rem;
-  border-radius: 12px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 2rem 2.25rem;
+  border-radius: 18px;
+  border: 1px solid rgba(7, 35, 73, 0.06);
   border-left: 4px solid #003366;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 18px 35px rgba(9, 20, 46, 0.08);
+  backdrop-filter: blur(10px);
   opacity: 0;
   transform: translateY(40px);
-  transition: all 0.6s ease-out;
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out,
+    box-shadow 0.25s ease-out,
+    transform 0.25s ease-out;
+  z-index: 1;
 }
 
 .foundation-card.reveal {
@@ -59,26 +70,122 @@
   transform: translateY(0);
 }
 
-.foundation-card ul {
-  padding-left: 1.5rem;
-  margin-top: 0.5rem;
+.foundation-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(7, 35, 73, 0.16);
 }
+
+.foundation-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  color: #10233f;
+}
+
+.foundation-card p {
+  line-height: 1.6;
+  color: #364057;
+}
+
+.foundation-card ul {
+  padding-left: 1.4rem;
+  margin-top: 0.5rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.foundation-card--highlight {
+  border-left-color: #0b7bd6;
+}
+
+.foundation-subheading {
+  margin-top: 1.1rem;
+  margin-bottom: 0.4rem;
+  color: #1e3355;
+}
+
+/* SIDE BANNERS */
+
+.side-banner {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: clamp(70px, 13vw, 120px);
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.24), transparent 70%),
+    linear-gradient(to bottom, rgba(0, 51, 102, 0.18), rgba(102, 153, 204, 0.08));
+  opacity: 0.23;
+  filter: blur(0.5px);
+  z-index: 0;
+  display: none;
+}
+
+.left-banner {
+  left: 0;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.right-banner {
+  right: 0;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+}
+
+@media (min-width: 900px) {
+  .side-banner {
+    display: block;
+  }
+}
+
+/* CTA BUTTON */
 
 .cta-fixed-button {
   position: fixed;
-  bottom: 2rem;
+  bottom: 1.5rem;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #003366;
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 50px;
+  background: rgba(0, 51, 102, 0.96);
+  color: #ffffff;
+  padding: 0.9rem 2.4rem;
+  border-radius: 999px;
   text-decoration: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  z-index: 100;
-  transition: background 0.3s ease;
+  border: none;
+  font-size: 0.98rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+  z-index: 20;
+  backdrop-filter: blur(12px);
+  transition:
+    background 0.25s ease-out,
+    transform 0.25s ease-out,
+    box-shadow 0.25s ease-out;
 }
 
 .cta-fixed-button:hover {
-  background-color: #002244;
+  background: #002244;
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Mobile / small height tweaks */
+
+@media (max-width: 768px) {
+  .foundation-page {
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+  }
+
+  .foundation-card {
+    padding: 1.6rem 1.4rem;
+  }
+
+  .cta-fixed-button {
+    position: static;
+    transform: none;
+    margin: 2.5rem auto 0 auto;
+    display: block;
+    text-align: center;
+  }
 }

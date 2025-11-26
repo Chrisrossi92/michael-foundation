@@ -1,52 +1,63 @@
 import React from 'react';
-import Rain1 from '../assets/Rain1.JPG';
-import Rain2 from '../assets/Rain2.JPG';
-import Rain3 from '../assets/Rain3.JPG';
-import Rain4 from '../assets/Rain4.JPG';
-import Rain5 from '../assets/Rain5.jpeg';
-import foundationLogo from '../assets/rossi-logo.jpeg';
-import familyBackground from '../assets/rossi-family.jpg';
+import { Link } from 'react-router-dom';
+import familyPhoto from '../assets/rossi-family.jpg';
 
+const rainImages = import.meta.glob(
+  '../assets/rain/*.{png,PNG,jpg,JPG,jpeg,JPEG,webp,WEBP}',
+  {
+    eager: true,
+    as: 'url',
+  }
+);
+const photoSources = Object.values(rainImages);
+const MAX_FALLING_PHOTOS = 7;
+const TOTAL_PHOTOS = Math.min(photoSources.length || 1, MAX_FALLING_PHOTOS);
 
-const photoRain = [Rain1, Rain2, Rain3, Rain4, Rain5];
+const Home = () => {
+  // To change these photos, just add/remove images in src/assets/rain/.
+  const fallingPhotos = Array.from({ length: TOTAL_PHOTOS }).map((_, index) => {
+    const src = photoSources[Math.floor(Math.random() * photoSources.length)];
+    return {
+      key: index,
+      src,
+      left: Math.random() * 100,
+      delay: Math.random() * -15,
+      duration: 12 + Math.random() * 8,
+    };
+  });
 
-const Home = () => (
-  <section className="hero">
-  <div className="hero-overlay">
-    <div className="photo-rain">
-      {Array.from({ length: 10 }).map((_, index) => {
-        const randomImg = photoRain[Math.floor(Math.random() * photoRain.length)];
-        const left = Math.random() * 100;
-        const delay = Math.random() * 15;
-        const size = 100 + Math.random() * 40;
-        return (
+  return (
+    <section className="hero">
+      <div className="hero-overlay" />
+
+      <div className="photo-rain">
+        {fallingPhotos.map(photo => (
           <img
-            key={index}
-            src={randomImg}
-            alt="Michael memory"
+            key={photo.key}
+            src={photo.src}
+            alt="Family moment"
             className="falling-photo"
             style={{
-              left: `${left}vw`,
-              animationDelay: `${delay}s`,
-              width: `${size}px`,
+              left: `${photo.left}%`,
+              animationDelay: `${photo.delay}s`,
+              animationDuration: `${photo.duration}s`,
             }}
           />
-        );
-      })}
-    </div>
+        ))}
+      </div>
 
-    <div className="hero-content centered-logo">
-      <img
-        src={foundationLogo}
-        alt="Michael J. Rossi Family Foundation Logo"
-        className="foundation-hero-logo"
-      />
-      <p className="tagline">Carrying forward a legacy of love, strength, and service.</p>
-      <a href="/about-michael" className="hero-button">Continue to Michael’s Story ↓</a>
-    </div>
-  </div>
-</section>
+      <div className="hero-content">
+        <div className="hero-photo-frame">
+          <img src={familyPhoto} alt="Rossi Family" />
+        </div>
+        <h1 className="hero-title">Michael J. Rossi Family Foundation</h1>
 
-);
+        <Link to="/about-michael" className="hero-button">
+          Continue to Michael&apos;s Story ↓
+        </Link>
+      </div>
+    </section>
+  );
+};
 
 export default Home;
